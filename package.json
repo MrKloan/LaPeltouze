@@ -1,0 +1,22 @@
+{
+  "name": "lapeltouze",
+  "version": "1.0.0",
+  "description": "Custom PoA chain used for brewing certification.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://MrKloan@github.com/mrkloan/LaPeltouze.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrkloan/LaPeltouze/issues"
+  },
+  "homepage": "https://github.com/mrkloan/LaPeltouze#readme",
+  "dependencies": {
+    "solc": "^0.4.18"
+  }
+}
