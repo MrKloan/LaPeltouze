@@ -1,2 +1,2 @@
 # La Peltouze
-> Custom PoA chain used for custom brewing specification.
+> Custom PoA chain used for brewing certification.
