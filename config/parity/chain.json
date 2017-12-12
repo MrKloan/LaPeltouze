@@ -3,8 +3,9 @@
     "engine": {
         "authorityRound": {
             "params": {
+                "blockReward": "0x4563918244F40000",
                 "gasLimitBoundDivisor": "0x400",
-                "stepDuration": "1",
+                "stepDuration": "5",
                 "validators": {
                     "list": [
                         "0x00bd138abd70e2f00903268f3db08f2d25677c9e"
@@ -14,6 +15,7 @@
         }
     },
     "params": {
+        "gasLimitBoundDivisor": "0x400",
         "maximumExtraDataSize": "0x20",
         "minGasLimit": "0x3938700",
         "networkID": "0x2323"
@@ -26,7 +28,7 @@
             }
         },
         "difficulty": "0x20000",
-        "gasLimit": "0x165A0BC00"
+        "gasLimit": "0x5B8D80"
     },
     "accounts": {
         "0x0000000000000000000000000000000000000001": {
@@ -76,6 +78,9 @@
                     }
                 }
             }
+        },
+        "0x00bd138abd70e2f00903268f3db08f2d25677c9e": {
+            "balance": "10000000000000000000000000000"
         },
         "0x6B0c56d1Ad5144b4d37fa6e27DC9afd5C2435c3B": {
             "balance": "10000000000000000000000000000"

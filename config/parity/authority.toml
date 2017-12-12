@@ -19,6 +19,9 @@ interface = "0.0.0.0"
 interface = "0.0.0.0"
 origins = ["all"]
 
+[ipc]
+disable = true
+
 [account]
 password = ["/parity/config/authority.pwd"]
 
