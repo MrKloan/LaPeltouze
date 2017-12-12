@@ -1,0 +1,61 @@
+version: '2.1'
+
+services:
+  authority0:
+    image: parity/parity:${PARITY_VERSION}
+    command:
+      --config /parity/config/authority.toml
+      --engine-signer 0x00bd138abd70e2f00903268f3db08f2d25677c9e
+    volumes:
+      - ./config/parity/chain.json:/parity/config/chain.json:ro
+      - ./config/parity/authority.toml:/parity/config/authority.toml:ro
+      - ./config/parity/keys:/root/.local/share/io.parity.ethereum/keys/${NETWORK_NAME}
+      - ./config/parity/authorities/authority0.pwd:/parity/config/authority.pwd:ro
+      - ./config/parity/authorities/authority0.json:/root/.local/share/io.parity.ethereum/keys/${NETWORK_NAME}/authority.json:ro
+      - ./config/parity/authorities/authority0.network.key:/root/.local/share/io.parity.ethereum/network/key:ro
+    ports:
+      - 8545:8545
+      - 8080:8180
+    networks:
+      poa:
+        ipv4_address: 172.16.0.10
+
+  member0:
+    image: parity/parity:${PARITY_VERSION}
+    command: 
+      --config /parity/config/member.toml
+    volumes:
+      - ./config/parity/chain.json:/parity/config/chain.json:ro
+      - ./config/parity/member.toml:/parity/config/member.toml:ro
+    ports:
+      - 8081:8180
+    networks:
+      poa:
+        ipv4_address: 172.16.0.20
+
+  monitor:
+    image: buythewhale/ethstats_monitor
+    volumes:
+      - ./config/monitor/app.json:/home/ethnetintel/eth-net-intelligence-api/app.json:ro
+    networks:
+      poa:
+        ipv4_address: 172.16.0.100
+
+  dashboard:
+    image: buythewhale/ethstats
+    volumes:
+      - ./config/dashboard/ws_secret.json:/eth-netstats/ws_secret.json:ro
+    ports:
+      - 8180:3000
+    networks:
+      poa:
+        ipv4_address: 172.16.0.200
+
+networks:
+  poa:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.0.1/24
+        gateway: 172.16.0.1
