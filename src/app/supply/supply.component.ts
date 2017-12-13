@@ -4,7 +4,7 @@ import {Step} from '../models/step';
 
 const Web3 = require('web3');
 const contract = require('truffle-contract');
-const peltouzeArtifact = require('../../../build/contracts/MetaCoin.json');
+const peltouzeArtifact = require('../../../build/contracts/Peltouze.json');
 
 @Component({
   templateUrl: './supply.component.html'
@@ -71,10 +71,13 @@ export class SupplyComponent implements OnInit {
       .then(instance => {
         meta = instance;
 
-        return meta.supplychains.call();
+        return meta.supplyChains.call(null, {
+          from : this.account
+        });
       })
       .then(supplyList => {
         this.chains = supplyList;
+        console.log(this.chains);
       })
       .catch(e => {
         console.log(e);

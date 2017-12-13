@@ -5,9 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {LocationStrategy, PathLocationStrategy} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {StepsComponent} from './steps/steps.component';
 import {AppRoutingModule} from './app.routing';
-import {ProductsComponent} from './products/products.component';
 import {SupplyComponent} from './supply/supply.component';
 import {AccordionModule, DataTableModule, DialogModule, DropdownModule, SharedModule} from 'primeng/primeng';
 
@@ -29,8 +27,6 @@ import {AccordionModule, DataTableModule, DialogModule, DropdownModule, SharedMo
   ],
   declarations: [
     AppComponent,
-    StepsComponent,
-    ProductsComponent,
     SupplyComponent
   ],
   providers: [{
