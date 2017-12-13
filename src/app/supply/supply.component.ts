@@ -17,10 +17,7 @@ export class SupplyComponent implements OnInit {
   account: any;
   accounts: any;
 
-  chains: SupplyChain[] = [{
-    uid: 1234,
-    name: "Yolo"
-  }];
+  chains: SupplyChain[] = [];
 
   newChain: any = {};
   newStep: any = {};
@@ -71,13 +68,17 @@ export class SupplyComponent implements OnInit {
       .then(instance => {
         meta = instance;
 
-        return meta.supplyChains.call(null, {
-          from : this.account
+        let supplyChainsNumber = meta.supplyChainsIncrement.call(null, {
+          from: this.account
         });
-      })
-      .then(supplyList => {
-        this.chains = supplyList;
-        console.log(this.chains);
+
+        supplyChainsNumber -= 1;
+
+        for (let i = 0; i < supplyChainsNumber; ++i) {
+          this.chains.push(meta.supplyChains.call(i, {
+            from : this.account
+          }));
+        }
       })
       .catch(e => {
         console.log(e);
