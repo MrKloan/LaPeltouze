@@ -8,6 +8,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {StepsComponent} from './steps/steps.component';
 import {AppRoutingModule} from './app.routing';
 import {ProductsComponent} from './products/products.component';
+import {SupplyComponent} from './supply/supply.component';
+import {AccordionModule, DataTableModule, DialogModule, DropdownModule, SharedModule} from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -17,12 +19,19 @@ import {ProductsComponent} from './products/products.component';
     BrowserModule,
     BrowserAnimationsModule,
 
-    AppRoutingModule
+    AppRoutingModule,
+
+    DataTableModule,
+    DialogModule,
+    DropdownModule,
+    AccordionModule,
+    SharedModule
   ],
   declarations: [
     AppComponent,
     StepsComponent,
-    ProductsComponent
+    ProductsComponent,
+    SupplyComponent
   ],
   providers: [{
     provide: LocationStrategy,
