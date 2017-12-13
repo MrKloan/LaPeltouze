@@ -24,7 +24,6 @@ export class SupplyComponent implements OnInit {
 
   newChain: any = {};
   newStep: any = {};
-  newChainName: string;
 
   displayDialog: boolean;
 
@@ -50,7 +49,7 @@ export class SupplyComponent implements OnInit {
     this.web3.eth.getAccounts((err, accounts) => {
 
       if (err != null) {
-        alert('There was an error fetching your accounts.');
+        alert('There was an error fetching your accounts.' + err);
         return;
       }
 
@@ -76,11 +75,6 @@ export class SupplyComponent implements OnInit {
       })
       .then(supplyList => {
         this.chains = supplyList;
-
-        /*for (let i = 0; i < this.chains.length; ++i) {
-          this.chains[i].steps = this.getAllStepsForSupplyChain(this.chains[i].uid);
-        }*/
-
       })
       .catch(e => {
         console.log(e);
@@ -95,7 +89,7 @@ export class SupplyComponent implements OnInit {
       .then(instance => {
         meta = instance;
 
-        return meta.addSupplyChain.call(this.newChainName, {
+        return meta.addSupplyChain.call(this.newChain.name, {
           from: this.account
         });
       })
@@ -111,8 +105,24 @@ export class SupplyComponent implements OnInit {
 
   }*/
 
-  addStepForSupplyChain() {
+  addStepForSupplyChain(supplyChainId: number) {
+    let meta;
 
+    this.peltouze
+      .deployed()
+      .then(instance => {
+        meta = instance;
+
+        return meta.addStep.call(supplyChainId, this.newStep.product, this.newStep.operation, {
+          from: this.account
+        });
+      })
+      .then(newStepId => {
+        this.getAllSupplyChains();
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 
   showAddStepDialog() {

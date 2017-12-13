@@ -9,77 +9,85 @@
 </section>
 
 
-<ng-template ngFor let-chain [ngForOf]="chains">
-
-  <br>
-
+<section>
   <div class="container">
-    <h1 class="title">{{ chain.name }}</h1>
+    <ng-template ngFor let-chain [ngForOf]="chains">
+
+      <br>
+
+      <div class="container">
+        <h1 class="title">{{ chain.name }}</h1>
+      </div>
+
+      <br>
+
+      <p-dataTable [value]="chain.steps" [paginator]="true" rows="15" [responsive]="true">
+
+        <p-header>Steps List</p-header>
+
+        <p-column field="product" header="Product" [sortable]="true"></p-column>
+        <p-column field="operation" header="Operation" [sortable]="true"></p-column>
+        <p-column field="createTime" header="Create Time" [sortable]="true"></p-column>
+
+        <p-footer>
+          <div class="ui-helper-clearfix" style="width:100%">
+            <button type="button" pButton icon="fa-plus" style="float:left" (click)="showAddStepDialog()" label="Add"></button>
+          </div>
+        </p-footer>
+      </p-dataTable>
+
+      <p-dialog header="Add Step" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+
+        <div class="ui-grid ui-grid-responsive ui-fluid">
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="product_{{ chain.name }}">Product</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="product_{{ chain.name }}" [(ngModel)]="newStep.product" /></div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="operation_{{ chain.name }}">Operation</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="operation_{{ chain.name }}" [(ngModel)]="newStep.operation" /></div>
+          </div>
+        </div>
+
+        <p-footer>
+          <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-check" (click)="addStepForSupplyChain(chain.uid)" label="Save"></button>
+          </div>
+        </p-footer>
+
+      </p-dialog>
+    </ng-template>
   </div>
-
-  <br>
-
-  <p-dataTable [value]="chain.steps" [paginator]="true" rows="15" [responsive]="true">
-
-    <p-header>Steps List</p-header>
-
-    <p-column field="product" header="Product" [sortable]="true"></p-column>
-    <p-column field="operation" header="Operation" [sortable]="true"></p-column>
-    <p-column field="createTime" header="Create Time" [sortable]="true"></p-column>
-
-    <p-footer>
-      <div class="ui-helper-clearfix" style="width:100%">
-        <button type="button" pButton icon="fa-plus" style="float:left" (click)="showAddStepDialog()" label="Add"></button>
-      </div>
-    </p-footer>
-  </p-dataTable>
-
-  <p-dialog header="Add Step" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
-
-    <div class="ui-grid ui-grid-responsive ui-fluid">
-      <div class="ui-grid-row">
-        <div class="ui-grid-col-4"><label for="product_{{ chain.name }}">Product</label></div>
-        <div class="ui-grid-col-8"><input pInputText id="product_{{ chain.name }}" [(ngModel)]="newStep.product" /></div>
-      </div>
-      <div class="ui-grid-row">
-        <div class="ui-grid-col-4"><label for="operation_{{ chain.name }}">Operation</label></div>
-        <div class="ui-grid-col-8"><input pInputText id="operation_{{ chain.name }}" [(ngModel)]="newStep.operation" /></div>
-      </div>
-    </div>
-
-    <p-footer>
-      <div class="ui-dialog-buttonpane ui-helper-clearfix">
-        <button type="button" pButton icon="fa-check" (click)="addStepForSupplyChain(chain.uid)" label="Save"></button>
-      </div>
-    </p-footer>
-
-  </p-dialog>
-</ng-template>
+</section>
 
 <br><br><br>
 
-<h1 class="title">
-  Add Supply Chain
-</h1>
+<section>
+  <div class="container">
+    <h1 class="title">
+      Add Supply Chain
+    </h1>
 
-<div class="field">
-  <label class="label">Name</label>
-  <p class="control">
-    <input
-      [(ngModel)]="newChainName"
-      name="recipientAddress"
-      class="input"
-      type="text"
-      placeholder="name">
-  </p>
-</div>
+    <div class="field">
+      <label class="label">Name</label>
+      <p class="control">
+        <input
+          [(ngModel)]="newChain.name"
+          name="recipientAddress"
+          class="input"
+          type="text"
+          placeholder="name">
+      </p>
+    </div>
 
-<div class="field is-grouped">
-  <p class="control">
-    <button
-      (click)="addSupplyChain()"
-      class="button is-primary">
-      Add
-    </button>
-  </p>
-</div>
+    <div class="field is-grouped">
+      <p class="control">
+        <button
+          (click)="addSupplyChain()"
+          class="button is-primary">
+          Add
+        </button>
+      </p>
+    </div>
+  </div>
+</section>
