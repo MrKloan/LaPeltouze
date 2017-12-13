@@ -67,8 +67,8 @@ services:
         ipv4_address: 172.16.0.101
 
   explorer:
-    # image: carechain/eth-explorer
-    image: settlemint/ethexplorer
+    image: carechain/eth-explorer
+    # image: settlemint/ethexplorer
     ports:
       - 8181:8000
     environment:
