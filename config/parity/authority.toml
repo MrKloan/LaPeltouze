@@ -2,9 +2,10 @@
 chain = "/parity/config/chain.json"
 
 [rpc]
-interface = "0.0.0.0"
-apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts", "signer"]
-cors = "all"
+apis = ["web3", "eth", "net", "personal", "parity", "parity_set", "traces", "rpc", "parity_accounts"]
+interface = "all"
+origins = ["all"]
+cors = "*"
 hosts = ["all"]
 
 [network]
@@ -13,11 +14,16 @@ bootnodes = [
 ]
 
 [ui]
-interface = "0.0.0.0"
+interface = "all"
+origins = ["all"]
+cors = "*"
+hosts = ["all"]
 
 [websockets]
-interface = "0.0.0.0"
+interface = "all"
 origins = ["all"]
+cors = "*"
+hosts = ["all"]
 
 [ipc]
 disable = true
