@@ -6,7 +6,6 @@ const contract = require('truffle-contract');
 const metaincoinArtifacts = require('../../../build/contracts/MetaCoin.json');
 
 declare var window: any;
-
 @Component({
   templateUrl: './steps.component.html'
 })

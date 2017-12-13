@@ -38,12 +38,12 @@
 
     <div class="ui-grid ui-grid-responsive ui-fluid">
       <div class="ui-grid-row">
-        <div class="ui-grid-col-4"><label for="product">Product</label></div>
-        <div class="ui-grid-col-8"><input pInputText id="product" [(ngModel)]="newStep.product" /></div>
+        <div class="ui-grid-col-4"><label for="product_{{ chain.name }}">Product</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="product_{{ chain.name }}" [(ngModel)]="newStep.product" /></div>
       </div>
       <div class="ui-grid-row">
-        <div class="ui-grid-col-4"><label for="operation">Operation</label></div>
-        <div class="ui-grid-col-8"><input pInputText id="operation" [(ngModel)]="newStep.operation" /></div>
+        <div class="ui-grid-col-4"><label for="operation_{{ chain.name }}">Operation</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="operation_{{ chain.name }}" [(ngModel)]="newStep.operation" /></div>
       </div>
     </div>
 
@@ -55,3 +55,31 @@
 
   </p-dialog>
 </ng-template>
+
+<br><br><br>
+
+<h1 class="title">
+  Add Supply Chain
+</h1>
+
+<div class="field">
+  <label class="label">Name</label>
+  <p class="control">
+    <input
+      [(ngModel)]="newChainName"
+      name="recipientAddress"
+      class="input"
+      type="text"
+      placeholder="name">
+  </p>
+</div>
+
+<div class="field is-grouped">
+  <p class="control">
+    <button
+      (click)="addSupplyChain()"
+      class="button is-primary">
+      Add
+    </button>
+  </p>
+</div>
