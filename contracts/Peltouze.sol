@@ -15,7 +15,7 @@ contract Peltouze {
         string operation; 
     }
 
-    uint private supplyChainsIncrement = 0;
+    uint public supplyChainsIncrement = 0;
     mapping(uint => SupplyChain) public supplyChains;
 
     function addSupplyChain(string name) public returns (uint) {
@@ -38,6 +38,4 @@ contract Peltouze {
 
         return stepId;
     }
-    
-
 }
