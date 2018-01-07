@@ -1,10 +1,17 @@
 # La Peltouze
-> Custom PoA chain used for brewing certification.
+> Ethereum private PoA chain used for supply chain certification.
 
-## Chaîne de traçabilité
+## Quickstart
 
- - Producteur : Mise en cuve ;
- - Producteur : Mise en bouteille ;
- - Distributeur(s) ;
- - Revendeur(s) ;
- - Consommateur : Réception et notation.
+```bash
+# Start dockerized environment 
+$ docker-compose up -d
+
+# Compile Smart Contracts
+$ npm install
+$ truffle compile
+$ truffle migrate
+$ ng serve
+```
+
+Then navigate to `http://localhost:4200/` to access the app.
